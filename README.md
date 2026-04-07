@@ -137,9 +137,7 @@ uv run marimo check notebooks/main.py
 ## Model Equation
 
 $$
-\frac{dU}{dt}
-= \alpha \cdot \gamma H \cdot \frac{K}{K + U}
-- \beta H \cdot \frac{U}{U + M}
+\frac{dU}{dt} = \alpha \cdot \gamma H \cdot \frac{K}{K + U} - \beta H \cdot \frac{U}{U + M}
 $$
 
 ## References

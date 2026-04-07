@@ -64,6 +64,22 @@ Typical questions it supports:
 - Where is the actual bottleneck in an AI-augmented workflow?
 - How does team size change equilibrium backlog versus useful throughput?
 
+## Background: Predator-Prey and Consumer-Resource Foundations
+
+This model is inspired by classic predator-prey and consumer-resource dynamics, adapted here for AI production and human processing:
+
+- Quick primer (accessible): Lotka-Volterra equations (Wikipedia)  
+  https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations
+
+- Lotka, A. J. (1925). *Elements of Physical Biology*. Williams & Wilkins.  
+  https://doi.org/10.5962/bhl.title.4489
+- Volterra, V. (1926). Fluctuations in the abundance of a species considered mathematically. *Nature*, 118, 558–560.  
+  https://doi.org/10.1038/118558a0
+- Holling, C. S. (1959). Some characteristics of simple types of predation and parasitism. *The Canadian Entomologist*, 91(7), 385–398.  
+  https://doi.org/10.4039/Ent91385-7
+- Griffen, B. D. (2021). Considerations when applying the consumer functional response in ecological studies. *Frontiers in Ecology and Evolution*, 9, 713147.  
+  https://doi.org/10.3389/fevo.2021.713147
+
 ## Why This Problem Matters
 
 This is not only a modelling exercise. In production settings, organisations are deploying increasingly capable AI systems into workflows where human review, correction, and decision-making remain constrained. When generation speed rises faster than human processing capacity, teams can experience:

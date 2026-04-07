@@ -27,6 +27,32 @@ As backlog grows, humans spend more effort reading and editing, and less effort 
 - Very large backlog growth when human capacity is insufficient
 - Diminishing returns from simply increasing AI speed or team size
 
+## System Dynamics Diagram
+
+```mermaid
+flowchart LR
+    H[Humans H] -->|Prompting capacity γ·H| P[AI token production]
+    U[Backlog U] -->|Reduces prompting via K/(K+U)| P
+    P -->|Adds tokens| U
+    U -->|Processing load U/(U+M)| C[Human processing β·H]
+    C -->|Removes tokens| U
+    U -->|Equilibrium when production = processing| E[Steady-state throughput]
+```
+## Simulation Paths Diagram
+
+```mermaid
+flowchart TB
+    I[Inputs: H, alpha, beta, gamma, K, M, U0] --> M[AIHumanTokenModel]
+    M --> ODE[Continuous ODE simulation]
+    M --> EULER[Discrete Euler simulation]
+    M --> MAP[Discrete Map simulation]
+    ODE --> TS[Time-series backlog plot]
+    EULER --> TS
+    MAP --> TS
+    M --> EQ[Equilibrium solver fsolve]
+    EQ --> OUT[Equilibrium backlog and steady-state throughput]
+```
+
 ## Why This Model
 
 Linear assumptions like “faster AI means proportionally more output” often fail in practice. Human cognitive limits introduce nonlinear effects, saturation, and bottlenecks. This model helps reasoning about such constraints quantitatively.
@@ -60,6 +86,43 @@ uv run marimo edit notebooks/main.py
 uv run marimo check notebooks/main.py
 ```
 
+## Key Python Packages
+
+### marimo
+
+- **Purpose**: Reactive notebook and app framework used for the interactive model UI.
+- **Details**: Drives the notebook cell graph, controls, and reactive rendering.
+- **Version**: `0.22.4`
+- **License**: Apache License 2.0
+
+### numpy
+
+- **Purpose**: Numerical array operations and vectorised calculations.
+- **Details**: Used for time grids, discrete simulation arrays, and parameter ranges.
+- **Version**: `2.4.4`
+- **License**: Multi-license distribution (metadata expression: `BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0`)
+
+### scipy
+
+- **Purpose**: Scientific algorithms for integration and root finding.
+- **Details**: Provides `odeint` for ODE simulation and `fsolve` for equilibrium solving.
+- **Version**: `1.17.1`
+- **License**: SciPy BSD-style core licence with bundled third-party component licences
+
+### plotly
+
+- **Purpose**: Interactive data visualisation.
+- **Details**: Renders time-series and scaling charts with zoom/hover support.
+- **Version**: `6.6.0`
+- **License**: MIT
+
+### pandas
+
+- **Purpose**: Tabular/time-series data tooling.
+- **Details**: Available for extension work such as exporting and analysing simulation outputs.
+- **Version**: `3.0.2`
+- **License**: BSD 3-Clause
+
 ## Notebook Features
 
 - Parameter controls for all model inputs
@@ -81,7 +144,7 @@ $$
 
 ## References
 
-See `references.md` for foundational consumer-resource papers, Holling type II literature, and relevant human-AI collaboration context.
+See `docs/references.md` for foundational consumer-resource papers, Holling type II literature, and relevant human-AI collaboration context.
 
 ## Extension Ideas
 

@@ -31,26 +31,26 @@ As backlog grows, humans spend more effort reading and editing, and less effort 
 
 ```mermaid
 flowchart LR
-    H[Humans H] -->|Prompting capacity γ·H| P[AI token production]
-    U[Backlog U] -->|Reduces prompting via K/(K+U)| P
+    H["Humans (H)"] -->|Prompting capacity| P["AI token production"]
+    U["Backlog (U)"] -->|Backlog limits prompting| P
     P -->|Adds tokens| U
-    U -->|Processing load U/(U+M)| C[Human processing β·H]
+    U -->|Creates processing load| C["Human processing"]
     C -->|Removes tokens| U
-    U -->|Equilibrium when production = processing| E[Steady-state throughput]
+    U -->|System seeks balance| E["Steady state throughput"]
 ```
 ## Simulation Paths Diagram
 
 ```mermaid
 flowchart TB
-    I[Inputs: H, alpha, beta, gamma, K, M, U0] --> M[AIHumanTokenModel]
-    M --> ODE[Continuous ODE simulation]
-    M --> EULER[Discrete Euler simulation]
-    M --> MAP[Discrete Map simulation]
-    ODE --> TS[Time-series backlog plot]
+    I["Inputs H alpha beta gamma K M U0"] --> M["AIHumanTokenModel"]
+    M --> ODE["Continuous ODE simulation"]
+    M --> EULER["Discrete Euler simulation"]
+    M --> MAP["Discrete Map simulation"]
+    ODE --> TS["Time series backlog plot"]
     EULER --> TS
     MAP --> TS
-    M --> EQ[Equilibrium solver fsolve]
-    EQ --> OUT[Equilibrium backlog and steady-state throughput]
+    M --> EQ["Equilibrium solver fsolve"]
+    EQ --> OUT["Equilibrium backlog and steady state throughput"]
 ```
 
 ## Why This Model

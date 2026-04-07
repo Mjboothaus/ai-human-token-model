@@ -64,6 +64,42 @@ Typical questions it supports:
 - Where is the actual bottleneck in an AI-augmented workflow?
 - How does team size change equilibrium backlog versus useful throughput?
 
+## Why This Problem Matters
+
+This is not only a modelling exercise. In production settings, organisations are deploying increasingly capable AI systems into workflows where human review, correction, and decision-making remain constrained. When generation speed rises faster than human processing capacity, teams can experience:
+
+- **Quality drift**: more output than can be meaningfully reviewed, with higher risk of unnoticed errors.
+- **Cognitive overload**: sustained attention fragmentation and reduced judgement quality.
+- **Hidden queueing costs**: growing response lag, delayed decisions, and backlog accumulation that is often invisible until it becomes operationally painful.
+- **Misleading productivity signals**: high token/output volume may look like progress while useful throughput stagnates.
+- **Governance and safety pressure**: compliance, traceability, and accountability become harder when review loops cannot keep pace.
+
+These concerns align with themes in the literature listed in `docs/references.md`: classic consumer-resource and saturation dynamics, queueing and bottleneck behaviour in constrained systems, and contemporary human-AI collaboration research on cognitive load, oversight limits, and reliability under scale.
+
+The practical goal is to move from “more AI output” to **sustainable, high-quality human-AI throughput**.
+
+### People Risks in Unmitigated AI Use
+
+Without explicit safeguards, AI adoption can create direct people risks:
+
+- **Cognitive overload and burnout risk**: sustained review load and context switching can reduce judgement quality over time (see Wang et al., 2026: https://doi.org/10.1007/s10462-026-11510-z).
+- **Automation bias and over-trust**: plausible AI outputs can be accepted too quickly, increasing unnoticed error risk (see Jiang et al., 2025: https://pmc.ncbi.nlm.nih.gov/articles/PMC12307350/).
+- **Deskilling and dependency**: if teams rely on AI outputs without deliberate skill maintenance, expert capability can erode (see Liang, 2026: https://arxiv.org/html/2603.27438v1).
+- **Role stress and accountability ambiguity**: unclear ownership of AI-assisted decisions can increase psychological strain and organisational risk.
+- **Perverse performance incentives**: measuring token volume rather than verified outcomes can reward speed over quality and safety.
+
+These are not only technical failure modes; they are socio-technical risks affecting wellbeing, trust, and decision quality.
+
+### Mitigation Principles (People-Centred)
+
+- **Measure useful throughput, not raw output volume**: track validated outcomes, rework rates, and queue age.
+- **Protect review capacity**: set explicit review budgets and escalation thresholds when backlog crosses limits.
+- **Maintain human accountability**: define who signs off on high-impact decisions and what evidence is required.
+- **Design for cognitive ergonomics**: reduce context switching, prioritise high-risk items, and rotate intensive review work.
+- **Govern with recognised frameworks**: align practice with NIST AI RMF (https://www.nist.gov/itl/ai-risk-management-framework) and OECD AI Principles (https://oecd.ai/en/ai-principles).
+
+For source literature, see `docs/references.md`.
+
 ## Running the Notebook
 
 This project uses `uv` for dependency and environment management.
